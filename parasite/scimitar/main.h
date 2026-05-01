@@ -22,6 +22,8 @@
 
 #include "Weapon/WeaponData.h"
 
+#include "../hooks/hooks.hpp"
+
 
 namespace scimitar
 {
@@ -46,6 +48,8 @@ namespace scimitar
         g_Offsets->New(R"(R6GameManager::instance)",            0x79EFD88);
         g_Offsets->New(R"(R6GamerProfileManager::instance)",    0x79EFD78);
         g_Offsets->New(R"(CameraFX::instance)",                 0x7214CB0);
+
+
 
         // always have this at the bottom.
         m_ScimitarInitialized = true;
@@ -182,11 +186,14 @@ namespace scimitar
 
             Sleep(10);
         }
+
+        hooks::Uninit( );
     }
 
     void thread()
     {
         init();
+        hooks::Init( );
         main();
     }
     /* 

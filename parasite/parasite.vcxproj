@@ -43,13 +43,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -71,6 +71,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)build</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate</IntDir>
+    <LibraryPath>$(ProjectDir)dependencies\lib\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)build</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate</IntDir>
+    <LibraryPath>$(ProjectDir)dependencies\lib\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -121,11 +131,14 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>glfw3.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -143,23 +156,109 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>glfw3.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_demo.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_impl_vulkan.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_tables.cpp" />
+    <ClCompile Include="dependencies\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="dependencies\minhook\buffer.c" />
+    <ClCompile Include="dependencies\minhook\hde\hde32.c" />
+    <ClCompile Include="dependencies\minhook\hde\hde64.c" />
+    <ClCompile Include="dependencies\minhook\hook.c" />
+    <ClCompile Include="dependencies\minhook\trampoline.c" />
+    <ClCompile Include="dependencies\vulkan\vulkan.cppm" />
+    <ClCompile Include="dependencies\vulkan\vulkan_video.cppm" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="hooks\fn\vulkan\hk_vulkan.cpp" />
+    <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="offsets\offsets.cpp" />
     <ClCompile Include="scimitar\Component\SkeletonComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="crashhandler.h" />
+    <ClInclude Include="dependencies\minhook\buffer.h" />
+    <ClInclude Include="dependencies\minhook\hde\hde32.h" />
+    <ClInclude Include="dependencies\minhook\hde\hde64.h" />
+    <ClInclude Include="dependencies\minhook\hde\pstdint.h" />
+    <ClInclude Include="dependencies\minhook\hde\table32.h" />
+    <ClInclude Include="dependencies\minhook\hde\table64.h" />
+    <ClInclude Include="dependencies\minhook\minhook.h" />
+    <ClInclude Include="dependencies\minhook\trampoline.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codecs_common.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_av1std.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_av1std_decode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_av1std_encode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h264std.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h264std_decode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h264std_encode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h265std.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h265std_decode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_h265std_encode.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_vp9std.h" />
+    <ClInclude Include="dependencies\vk_video\vulkan_video_codec_vp9std_decode.h" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_concurrent_unordered_map.hpp" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_dispatch_table.h" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_format_utils.h" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_safe_struct.hpp" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_safe_struct_utils.hpp" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_small_containers.hpp" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_sparse_range_map.hpp" />
+    <ClInclude Include="dependencies\vulkan\utility\vk_struct_helper.hpp" />
+    <ClInclude Include="dependencies\vulkan\vk_enum_string_helper.h" />
+    <ClInclude Include="dependencies\vulkan\vk_icd.h" />
+    <ClInclude Include="dependencies\vulkan\vk_layer.h" />
+    <ClInclude Include="dependencies\vulkan\vk_platform.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_android.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_beta.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_core.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_directfb.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_enums.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_extension_inspection.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_format_traits.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_fuchsia.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_funcs.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_ggp.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_handles.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_hash.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_hpp_macros.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_ios.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_layer_settings.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_macos.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_metal.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_ohos.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_profiles.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_raii.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_screen.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_shared.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_static_assertions.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_structs.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_to_string.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_vi.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_video.hpp" />
+    <ClInclude Include="dependencies\vulkan\vulkan_wayland.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_win32.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_xcb.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_xlib.h" />
+    <ClInclude Include="dependencies\vulkan\vulkan_xlib_xrandr.h" />
+    <ClInclude Include="hooks\hooks.hpp" />
     <ClInclude Include="offsets\offsets.h" />
     <ClInclude Include="scimitar\Cache\cache.h" />
     <ClInclude Include="scimitar\Component\Component.h" />

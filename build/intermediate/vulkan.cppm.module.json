@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan.cppm.obj",
+            "outputs": [
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vc143.pdb",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan.cppm.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "vulkan_hpp",
+                    "source-path": "c:\\users\\crazy\\documents\\visual studio projects\\r6-parasite\\parasite\\dependencies\\vulkan\\vulkan.cppm",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

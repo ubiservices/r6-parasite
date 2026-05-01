@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\SkeletonComponent.obj",
+            "outputs": [
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\SkeletonComponent.h_A00459AF73E5421D.ifc.dt.module.json",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\SkeletonComponent.h_A00459AF73E5421D.ifc.dt.d.json",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\SkeletonComponent.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\parasite\\scimitar\\Component\\SkeletonComponent.h",
+                    "source-path": "c:\\users\\crazy\\documents\\visual studio projects\\r6-parasite\\parasite\\scimitar\\component\\skeletoncomponent.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan_video.obj",
+            "outputs": [
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan_video.cppm.ifc.dt.module.json",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan_video.cppm.ifc.dt.d.json",
+                "C:\\Users\\crazy\\Documents\\Visual Studio Projects\\r6-parasite\\build\\intermediate\\vulkan_video_hpp.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "vulkan_video_hpp",
+                    "source-path": "c:\\users\\crazy\\documents\\visual studio projects\\r6-parasite\\parasite\\dependencies\\vulkan\\vulkan_video.cppm",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
