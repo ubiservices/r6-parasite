@@ -19,7 +19,7 @@ void hooks::Init( )
 		//ENABLE_API_HOOK( vkCmdBindPipeline, L"vulkan-1.dll", "vkCmdBindPipeline" )
 		//ENABLE_API_HOOK( vkCmdBindDescriptorSets, L"vulkan-1.dll", "vkCmdBindDescriptorSets" )
 		//ENABLE_API_HOOK( vkCmdDraw, L"vulkan-1.dll", "vkCmdDraw" )
-		ENABLE_API_HOOK( vkGetPhysicalDeviceProperties, L"vulkan-1.dll", "vkGetPhysicalDeviceProperties" )
+		//ENABLE_API_HOOK( vkGetPhysicalDeviceProperties, L"vulkan-1.dll", "vkGetPhysicalDeviceProperties" )
 		ENABLE_API_HOOK( vkGetSwapchainImagesKHR, L"vulkan-1.dll", "vkGetSwapchainImagesKHR" )
 		ENABLE_API_HOOK( vkCmdEndRenderPass, L"vulkan-1.dll", "vkCmdEndRenderPass" )
 	}
